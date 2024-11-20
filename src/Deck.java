@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Deck {
-    private ArrayList cards;
+    private ArrayList<Card> cards;
     private int cardsLeft;
 
     public Deck(String ranks[], String suits[], int values[]) {
@@ -15,6 +15,7 @@ public class Deck {
             }
         }
         cardsLeft = cards.size();
+        shuffle();
     }
     public boolean isEmpty() {
         if (cardsLeft == 0) {
@@ -27,8 +28,10 @@ public class Deck {
         return cardsLeft;
     }
     public Card deal(){
-        return cards.get(cardsLeft);
-        cardsLeft--;
+        if (isEmpty() == true) {
+            return null;
+        }
+        return cards.get(--cardsLeft);
     }
     public void shuffle() {
         cardsLeft = cards.size();
