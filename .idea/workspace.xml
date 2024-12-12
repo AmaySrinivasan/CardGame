@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa62cf3a-998d-4df5-af8a-c212388f3a59" name="Changes" comment="Worked a lot on player and game,but don't know if anything works">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="aa62cf3a-998d-4df5-af8a-c212388f3a59" name="Changes" comment="Finished entire game logic, just need to add finishing touches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
@@ -108,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732143405889</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished entire game logic, just need to add finishing touches">
+      <option name="closed" value="true" />
+      <created>1733985706224</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733985706225</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +134,7 @@
     <MESSAGE value="Finished Card Class" />
     <MESSAGE value="Finished Card and Deck class still working on the other two. Decided on Blackjack" />
     <MESSAGE value="Worked a lot on player and game,but don't know if anything works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked a lot on player and game,but don't know if anything works" />
+    <MESSAGE value="Finished entire game logic, just need to add finishing touches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished entire game logic, just need to add finishing touches" />
   </component>
 </project>
