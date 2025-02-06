@@ -6,8 +6,10 @@ public class Game {
     private Player player;
     private Deck deck;
     private Player dealer;
+    private BlackJackViewer viewer;
     // Constructor for Game Class
     public Game(String[] ranks, String[] suits, int[] values) {
+        viewer = new BlackJackViewer(this);
         deck = new Deck(ranks, suits, values);
         Scanner input = new Scanner(System.in);
         // Takes in user's name
