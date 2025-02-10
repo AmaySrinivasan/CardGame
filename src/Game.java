@@ -1,4 +1,7 @@
 // Blackjack Card Game by Amay Srinivasan
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -7,9 +10,17 @@ public class Game {
     private Deck deck;
     private Player dealer;
     private BlackJackViewer viewer;
+    public Image table;
+    public Image[] cards;
     // Constructor for Game Class
     public Game(String[] ranks, String[] suits, int[] values) {
+        table = new ImageIcon("Resources/BlackJackTable.jpg").getImage();
+        cards = new Image[53];
+        for (int i = 0; i < cards.length; i++){
+            cards[i] = new ImageIcon("Resources/" + i + ".png").getImage();
+        }
         viewer = new BlackJackViewer(this);
+
         deck = new Deck(ranks, suits, values);
         Scanner input = new Scanner(System.in);
         // Takes in user's name
@@ -191,5 +202,6 @@ public class Game {
         // Runs the game
         Game game = new Game(ranks,suits, values);
         game.playGame();
+
     }
 }
