@@ -9,8 +9,8 @@ public class Deck {
         cards = new ArrayList<Card>();
         // Creates a new card that holds a unique suit and rank, and blackjack assigned values
         for (int i = 0; i < ranks.length; i++) {
-            for (String suit : suits) {
-                cards.add(new Card(ranks[i], suit, values[i]));
+            for (int j = 0; j < suits.length; j++) {
+                cards.add(new Card(ranks[i], suits[j], values[i], "" + (i*4 + j +1)));
             }
         }
         cardsLeft = cards.size();

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa62cf3a-998d-4df5-af8a-c212388f3a59" name="Changes" comment="Finished entire game, reformatted, and did comments">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CardGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-    </list>
+    <list default="true" id="aa62cf3a-998d-4df5-af8a-c212388f3a59" name="Changes" comment="Created a window which can display both the table and cards" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738882564482</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created a window which can display both the table and cards">
+      <option name="closed" value="true" />
+      <created>1739223805734</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739223805735</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +159,7 @@
     <MESSAGE value="Worked a lot on player and game,but don't know if anything works" />
     <MESSAGE value="Finished entire game logic, just need to add finishing touches" />
     <MESSAGE value="Finished entire game, reformatted, and did comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished entire game, reformatted, and did comments" />
+    <MESSAGE value="Created a window which can display both the table and cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a window which can display both the table and cards" />
   </component>
 </project>

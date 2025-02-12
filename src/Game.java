@@ -117,6 +117,7 @@ public class Game {
         // Informs player of cards, but only one of dealer's is face-up
         System.out.println(player);
         System.out.println("Dealers cards: " + dealer.getHand().get(0) + " and [You don't get to see this card yet]");
+        viewer.repaint()
     }
     private void makePlayerMove() {
         // Lets user play as long as they haven't busted
