@@ -1,21 +1,30 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Deck {
     // Instance variables for the deck class
-    private ArrayList<Card> cards;
+    public ArrayList<Card> cards;
     private int cardsLeft;
+    private Image cardImage;
     // Constructor for deck class
-    public Deck(String ranks[], String suits[], int values[]) {
+    public Deck(String ranks[], String suits[], int values[],BlackJackViewer viewer) {
         cards = new ArrayList<Card>();
-        // Creates a new card that holds a unique suit and rank, and blackjack assigned values
+        // Creates a new card that holds a unique suit and rank, and blackjack assigned values, as well as a cardImage for each card
         for (int i = 0; i < ranks.length; i++) {
             for (int j = 0; j < suits.length; j++) {
-                cards.add(new Card(ranks[i], suits[j], values[i], "" + (i*4 + j +1)));
+                cardImage = new ImageIcon("Resources/" + (i*4 + j +1) + ".png").getImage();
+                cards.add(new Card(ranks[i], suits[j], values[i], cardImage,viewer));
             }
         }
         cardsLeft = cards.size();
         shuffle();
     }
+    // Returns the arraylist of cards
+    public  ArrayList<Card> getCards() {
+        return cards;
+    }
+
     // Checks if the deck has any cards left
     public boolean isEmpty() {
         if (cardsLeft == 0) {

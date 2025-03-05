@@ -10,19 +10,24 @@ public class Game {
     private Deck deck;
     private Player dealer;
     private BlackJackViewer viewer;
-    public Image table;
-    public Image[] cards;
+    private Image table;
+    private boolean dealerTurnOver;
+    private Scanner input;
+
     // Constructor for Game Class
     public Game(String[] ranks, String[] suits, int[] values) {
+        // Creates the blackjack table image
         table = new ImageIcon("Resources/BlackJackTable.jpg").getImage();
-        cards = new Image[53];
-        for (int i = 0; i < cards.length; i++){
-            cards[i] = new ImageIcon("Resources/" + i + ".png").getImage();
-        }
+        // Connect the ends
         viewer = new BlackJackViewer(this);
-
-        deck = new Deck(ranks, suits, values);
-        Scanner input = new Scanner(System.in);
+        // Sets up the deck
+        deck = new Deck(ranks, suits, values,viewer);
+        // Dealer's card starts down
+        dealerTurnOver = false;
+        // One input for the whole class
+        input = new Scanner(System.in);
+        // Start of with Instructions in GUI
+        viewer.setGameState("Instructions");
         // Takes in user's name
         System.out.println("Please enter your name: ");
         String name = input.nextLine();
@@ -35,7 +40,6 @@ public class Game {
     public void playGame() {
         // Prints game instructions
         printInstructions();
-        Scanner input = new Scanner(System.in);
         // Users can play as long as their money total is greater than 0.
         while (player.getMoney() > 0) {
             // Informs users of current total money
@@ -54,9 +58,9 @@ public class Game {
             // Otherwise, they are invited to play another round
             else {
                 System.out.println("Do you want to play another round? (yes)");
-                input.nextLine();
+                String response = input.nextLine();
                 // Game also ends if they don't say yes to playing again
-                if (!input.nextLine().equals("yes")) {
+                if (!response.equals("yes")) {
                     break;
                 }
             }
@@ -76,19 +80,22 @@ public class Game {
         System.out.println("If you win, you win you'll win double your bet, but if you lose you'll lose your bet. (Ties you have your bet returned)");
         System.out.println();
         // Checks to see if they are ready to play
-        Scanner input = new Scanner(System.in);
         System.out.println("Do you understand the rules, and are you ready to play? (yes)");
         String response = input.nextLine();
-        if (!response.equals("yes")) {
-            printInstructions();
+        while (!response.equals("yes")) {
+            System.out.println("Please type 'yes' to continue");
+            response = input.nextLine();
         }
+        // Sets the GUI state to play game, so starts playing in GUI
+        viewer.setGameState("Play Game");
+        viewer.repaint();
     }
     // Takes in a user's bet
     public int takeBet() {
         // Asks them for a bet
-        Scanner input = new Scanner(System.in);
         System.out.println("How much do you want to bet? ");
         int bet = input.nextInt();
+        input.nextLine();
         // Checks to see if bet is valid(greater than 0 and less than their total)
         while (bet <= 0 || bet > player.getMoney()) {
             // If not valid, prompt them until they enter a valid bet
@@ -103,6 +110,8 @@ public class Game {
         return bet;
     }
     public void setupGame () {
+        // Dealer's cards start face down
+        dealerTurnOver = false;
         // Uses the user's valid bet and takes it out of total
         player.setBet(takeBet());
         // Resets the hands and shuffles deck
@@ -117,20 +126,22 @@ public class Game {
         // Informs player of cards, but only one of dealer's is face-up
         System.out.println(player);
         System.out.println("Dealers cards: " + dealer.getHand().get(0) + " and [You don't get to see this card yet]");
-        viewer.repaint()
+        // Updates the GUI to play the game
+        viewer.setGameState("Play Game");
+        viewer.repaint();
     }
     private void makePlayerMove() {
         // Lets user play as long as they haven't busted
         while (player.getPoints() <= 21) {
             // Asks them for their decision
             System.out.println("Your current points: " + player.getPoints() + ". Would you like to hit or stand? ");
-            Scanner input = new Scanner(System.in);
             String response = input.nextLine();
             // If they hit deal them another card
             if (response.equals("hit")) {
                 Card drawnCard = deck.deal();
                 player.addCard(drawnCard);
                 System.out.println("You drawn card is: " + drawnCard);
+                viewer.repaint();
                 System.out.println(player);
                 // Check again if they bust
                 if (player.getPoints() > 21) {
@@ -181,6 +192,9 @@ public class Game {
                 player.pushBet();
             }
         }
+        // Updates the GUI to the game over state for inbetween rounds
+        viewer.setGameState("Game Over");
+        viewer.repaint();
     }
     // Dealer's turn
     private void makeDealerMove() {
@@ -189,20 +203,37 @@ public class Game {
             Card drawnCard = deck.deal();
             dealer.addCard(drawnCard);
         }
+        dealerTurnOver = true;
         // Lets user know what the dealer had
         System.out.println("Final Dealer's hand: " + dealer);
+        // Updates the GUI of dealer's cards
+        viewer.repaint();
+    }
+    // Whether the dealer's card is face up or down
+    public boolean isDealerTurnOver() {
+        return dealerTurnOver;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Player getDealer() {
+        return dealer;
+    }
+
+    public Image getTable() {
+        return table;
     }
 
     public static void main(String[] args) {
         // Ranks for every card
         String ranks[] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
         // Suits for every card
-        String suits[] = {"Hearts", "Clubs", "Diamonds", "Spades"};
+        String suits[] = {"Spades", "Hearts", "Diamonds", "Clubs"};
         // Blackjack values for every card
         int values[] = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
         // Runs the game
-        Game game = new Game(ranks,suits, values);
+        Game game = new Game(ranks, suits, values);
         game.playGame();
-
     }
-}
+    }

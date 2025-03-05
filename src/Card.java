@@ -5,24 +5,27 @@ public class Card {
     private String rank;
     private String suit;
     private int value;
-    private String cardNum;
+    public Image cardImage;
+    private BlackJackViewer viewer;
     //Constructor for the Card Class
-    public Card(String rank, String suit, int value, String cardNum) {
+    public Card(String rank, String suit, int value, Image cardImage, BlackJackViewer viewer) {
         this.rank = rank;
         this.suit = suit;
         this.value = value;
-        this.cardNum = cardNum;
+        this.cardImage = cardImage;
+        this.viewer = viewer;
     }
 
     // Getter for Card Rank
     public String getRank() {
         return rank;
     }
-    public void drawCardImage(Graphics g) {
-        g.drawImage(game.cards[cardNum],        // image to draw
-                100, 100 ,
-                500, 500,// (x, y) of upper left corner in output window
-                this);
+    // Lets Each Card Draw Itself
+    public void drawCardImage(Graphics g, int locationX, int locationY) {
+        g.drawImage(this.cardImage,        // image to draw
+                locationX, locationY ,
+                100, 140,// (x, y) of upper left corner in output window
+                viewer);
     }
 
     // Setter for Card Rank
